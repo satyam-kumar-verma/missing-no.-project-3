@@ -13,6 +13,9 @@ let num1=0;
 let num2=0;
 let ansVal=0
 
+let saveClickCount = 0 ;
+let saveClickCountMoreThan1 = 0;
+
 let clearBtn = document.getElementById("clearBtn");
 let historyContainer = document.getElementById("historyContainer");
 
@@ -50,18 +53,33 @@ checkBtn.onclick= function(){
 
 nextBtn.onclick = function(){
     generateNumbers();
+    inputNumber.value="";
+
+    saveClickCount = 0;
+    saveClickCountMoreThan1 = 0;
 
 }
 
 
 saveBtn.onclick=function(){
 
-    historyContainer.appendChild(historyElementContainer);
+    saveClickCountMoreThan1 = saveClickCountMoreThan1+1;
 
-    let historyElement= document.createElement("h1");
-    historyElement.textContent = num1 + " + " + num2 +" = " + ansVal;
-    historyElement.classList.add("text-center");
-    historyElementContainer.appendChild(historyElement);
+    if(saveClickCount===0){
+
+        historyContainer.appendChild(historyElementContainer);
+
+        let historyElement= document.createElement("h1");
+        historyElement.textContent = num1 + " + " + num2 +" = " + ansVal;
+        historyElement.classList.add("text-center");
+        historyElementContainer.appendChild(historyElement);
+
+        saveClickCount =1;
+    }
+
+    if(saveClickCountMoreThan1 > 1){
+        alert("You have already Saved this sum please click next to save another sum");
+    }
 }
 
 clearBtn.onclick = function(){
