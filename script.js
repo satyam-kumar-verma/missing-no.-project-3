@@ -50,6 +50,7 @@ checkBtn.onclick= function(){
 
 nextBtn.onclick = function(){
     generateNumbers();
+    inputNumber.value="";
 
 }
 
